@@ -11,6 +11,10 @@ Semantic transformations on Clojure files, for smarter Leiningen templates.
     to-string)
 ```
 
+## TODO
+
+Look at https://github.com/weavejester/cljfmt
+
 ## License
 
 Copyright © 2014 Arne Brasseur
