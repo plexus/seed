@@ -1,10 +1,9 @@
 (ns seed.core
-  (:require [rewrite-clj.zip :as zip]
-            [rewrite-clj.zip.indent :as zip-indent]))
+  (:require [rewrite-clj.zip :as zip]))
 
 (def of-file    zip/of-file)
 (def of-string  zip/of-string)
-(def to-string  zip/->root-string)
+(def to-string  zip/root-string)
 
 (defn set-ns [zipper name]
   (-> zipper
@@ -20,5 +19,4 @@
       (zip/insert-right require)
       zip/right
       (zip/prepend-newline)
-      (zip-indent/indent 12)
-      ))
+      (zip/prepend-space 12)))
