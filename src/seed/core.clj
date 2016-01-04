@@ -1,5 +1,5 @@
 (ns seed.core
-  (:require [rewrite-clj.zip :as zip]))
+  (:require [rewrite-clj.zip :as zip :refer [find-value next]]))
 
 (def of-file    zip/of-file)
 (def of-string  zip/of-string)
@@ -20,3 +20,14 @@
       zip/right
       (zip/prepend-newline)
       (zip/prepend-space 12)))
+
+(defn project-add-dependency [zloc dep]
+  "Given a leiningen project.clj zipper, insert a dependency vector."
+  (-> zloc
+      (find-value next :dependencies)
+      zip/next
+      zip/down
+      zip/rightmost
+      (zip/insert-right dep)
+      (zip/append-space 16)
+      (zip/append-newline)))
